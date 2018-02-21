@@ -50,3 +50,10 @@ export function signIn(cred){
     }
 }
 
+export function signOut(){
+    localStorage.removeItem("token")
+
+    return {
+        type: types.SIGN_OUT
+    }
+}
