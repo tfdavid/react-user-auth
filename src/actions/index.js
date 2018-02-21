@@ -57,3 +57,23 @@ export function signOut(){
         type: types.SIGN_OUT
     }
 }
+
+export function getQuote(){
+
+    const config={
+        headers: {
+            authorization: localStorage.getItem('token')
+        }
+    }
+
+    return async dispatch=>{
+        const resp = await axios.get(BASE_URL, config)
+
+        console.log("get Quote response: ", resp)
+
+        dispatch({
+            type: types.GET_QUOTE,
+            payload: resp.data.message
+        })
+    }
+}
